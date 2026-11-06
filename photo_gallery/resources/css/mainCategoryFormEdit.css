@@ -1,0 +1,89 @@
+main {
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    padding: 24px;
+    margin-bottom: 24px;
+    max-width: 640px;
+}
+
+main h1 {
+    margin: 0 0 16px;
+    font-size: 1.5rem;
+    color: #1f2937;
+}
+
+/* Поля */
+.field {
+    margin-bottom: 16px;
+}
+
+.field label {
+    display: block;
+    font-size: 0.9rem;
+    color: #374151;
+    margin-bottom: 6px;
+}
+.field img { 
+    display: block;
+    margin: 1rem auto;
+    height: 400px; 
+    width: 400px;    
+
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="file"],
+.field textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.field input[type="text"]:focus,
+.field input[type="email"]:focus,
+.field input[type="file"]:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: #7c3aed;
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
+.field input[type="file"] {
+    padding: 8px;
+    color: #4b5563;
+}
+
+.field .error {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: #dc2626;
+}
+
+/* Кнопка */
+.btn-save {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    background: #111827;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+

@@ -1,0 +1,15 @@
+{
+    "Email": "Email",
+    "Password": "Пароль",
+    "Remember me": "Запомнить меня",
+    "Forgot your password?": "Забыли пароль?",
+    "Log in": "Войти",
+    "Register": "Зарегистрироваться",
+    "Name": "Имя",
+    "Confirm Password": "Повторите пароль",
+    "Already registered?": "Уже зарегистрированы?",
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "Забыли пароль? Ничего страшного. Просто укажите свой адрес электронной почты, и мы вышлем вам ссылку для сброса пароля, с помощью которой вы сможете задать новый пароль.",
+    "Email Password Reset Link": "Сбросить пароль",
+    "Profile": "Профиль",
+    "Log Out": "Выйти"
+}

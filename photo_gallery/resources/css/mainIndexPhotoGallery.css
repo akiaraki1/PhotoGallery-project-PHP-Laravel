@@ -1,0 +1,96 @@
+/* === Main: сетка карточек === */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+
+/* === Карточки === */
+.card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: #F3F4F6;
+    border-radius: 0; /* явно без скругления */
+}
+
+.card .category  {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    background: #F3F4F6;
+    border-radius: 0; /* явно без скругления */
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-body h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.card-body p {
+    font-size: 0.875rem;
+    color: #6B7280;
+}
+.card a {
+    text-decoration: none;   /* убираем подчёркивание */
+    color: inherit;          /* текст наследует цвет родителя */
+    display: block;          /* ссылка занимает всю карточку */
+}
+
+.card a:hover {
+    text-decoration: none;   /* на всякий случай — при наведении тоже без подчёркивания */
+}
+/* === Адаптив === */
+@media (max-width: 600px) {
+    header {
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    header h1 {
+        font-size: 1rem;
+    }
+    nav {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    main {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+}
+
+.header-subtitle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.875rem;
+    color: #6B7280;
+    white-space: nowrap;
+}

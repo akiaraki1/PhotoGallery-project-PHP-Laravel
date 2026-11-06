@@ -1,0 +1,118 @@
+main {
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+section {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Секция с .show — центрируем как карточку профиля */
+section:has(.show) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Фото — БЕЗ скругления, по центру, ограничено по ширине */
+img.show {
+    width: 400px;
+    max-width: 400px;
+    height: auto;
+    border-radius: 0;
+    margin-bottom: 1.25rem;
+}
+
+/* Заголовок фото */
+h1.show {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.75rem;
+}
+
+/* Параграфы (категория и описание) */
+p.show {
+    font-size: 0.875rem;
+    color: #6B7280;
+    margin-bottom: 0.75rem;
+    max-width: 600px;
+}
+
+/* === Контейнер со всеми тремя кнопками на одной строке === */
+div.show {
+    display: flex;
+    flex-wrap: wrap;            /* если не влезают — перенесутся на новую строку */
+    align-items: center;        /* выравнивание по вертикали — на одном уровне */
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+/* Форма «Удалить» — inline, чтобы кнопка стояла в ряду с ссылками */
+div.show > form.show {
+    display: inline;
+    margin: 0;
+}
+
+/* Базовый вид всех трёх кнопок */
+div.show > a.show,
+div.show form.show button.show {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+    white-space: nowrap;
+}
+
+/* Назад в категорию — синий (первая ссылка в div.show) */
+div.show > a.show:first-child {
+    background: #3B82F6;
+    color: #fff;
+}
+div.show > a.show:first-child:hover {
+    background: #2563EB;
+}
+
+/* Редактировать — янтарный (вторая ссылка, появляется только у владельца) */
+div.show > a.show:nth-child(2) {
+    background: #F59E0B;
+    color: #fff;
+}
+div.show > a.show:nth-child(2):hover {
+    background: #D97706;
+}
+
+/* Удалить — красный (кнопка в форме внутри div.show) */
+div.show form.show button.show {
+    background: #DC2626;
+    color: #fff;
+}
+div.show form.show button.show:hover {
+    background: #B91C1C;
+}
+
+/* === Адаптив (только main/section) === */
+@media (max-width: 600px) {
+    main {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+    main > section {
+        padding: 1.25rem;
+    }
+}
