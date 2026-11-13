@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{{ config('app.name', 'Фотогалерея') }} — Редактирование поста</title>
+        @vite(['resources/css/basic.css'])
+        @vite(['resources/css/headerPhotoGalleryProfile.css'])
+        @vite(['resources/css/mainCategoryFormEdit.css'])
+     
+    </head>
+    <body>
+        <header>
+                <h1>Редактирование поста</h1>
+
+                <nav>
+                @auth
+                    <div class="user-avatar-block">
+                        @if (Auth::user()->avatar_image)
+                            <img src="{{ asset('storage/' . Auth::user()->avatar_image) }}" alt="Аватар">
+                        @else
+                            <div class="avatar-placeholder"></div>
+                        @endif
+                        <span>{{ Auth::user()->name }}</span>
+                    </div>
+
+                    @if (Route::has('profile.edit'))
+                        <a
+                            href="{{ route('profile.edit') }}"
+                        >
+                                    {{ __('Profile') }}
+                        </a>
+                    @endif
+            
+                    @if (Route::has('logout'))
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit">{{ __('Log Out') }} </button>
+                        </form>
+                    @endif
+                @endauth
+            </nav>
+        </header>
+
+        <main>
+
+            <h1>Редактировать запись</h1>
+
+            
+            <form action="{{ route('gallery.update', ['category' => $category, 'photoGallery' => $photoGallery]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="field">
+                    <label for="image">Изображение</label>
+                    <img src="{{ asset('storage/' . $photoGallery->image) }}" alt="{{ $photoGallery->title }}">
+                    <input type="file" name="image" id="image">
+                    <p>Размер файла — до 5 МБ. Габариты изображения — от 300×300 до 500×500 px. Рекомендуемый размер изображения 400x400 px. Форматы: jpeg, jpg, png, webp. </p>
+                    @error('image')
+                        <small class="error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="field">
+                    <label for="title">Заголовок</label>
+                    <input type="text" name="title" placeholder="Не более 50 символов."value="{{ old('title', $photoGallery->title) }}">
+                    @error('title')
+                        <small class="error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="field">
+                    <label for="description">Описание</label>
+                    <textarea name="description" rows="4" placeholder="Не более 150 символов.">{{ old('description', $photoGallery->description)}}</textarea>
+                    @error('description')
+                        <small class="error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <button type="submit" class="btn-save">Сохранить изменения</button>
+            </form>
+        </main>
+    </body>
+</html>

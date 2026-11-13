@@ -1,0 +1,132 @@
+/* mainProfile.css — только <main>.  */
+main {
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+main h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1.5rem;
+}
+
+/* === Секции (карточки) === */
+section {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+section h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+section > p {
+    font-size: 0.875rem;
+    color: #6B7280;
+    margin-bottom: 1.25rem;
+}
+
+/* === Карточка «Информация профиля» — центрирование всего контента ===
+   Срабатывает, потому что внутри есть .avatar-preview и input[name="avatar_image"] */
+section:has(.avatar-preview),
+section:has(input[name="avatar_image"]) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* === Формы внутри секций === */
+section form p { margin-bottom: 1rem; }
+
+section form p:last-child {
+    margin-bottom: 0;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+section form label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.375rem;
+}
+
+section form input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-family: inherit;
+    background: #FFFFFF;
+    color: #111827;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+section form input:focus {
+    border-color: #6366F1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    outline: none;
+}
+
+section form small {
+    display: block;
+    color: #DC2626;
+    font-size: 0.75rem;
+    margin-top: 0.375rem;
+}
+
+section form button {
+    padding: 0.5rem 1.25rem;
+    background: #111827;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+
+section form button:hover { background: #1F2937; }
+
+/* === Красная кнопка удаления аккаунта === */
+main > section:last-child form button { background: #DC2626; }
+main > section:last-child form button:hover { background: #B91C1C; }
+
+/* === Аватар — предпросмотр === */
+.avatar-preview {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #E5E7EB;
+    margin-bottom: 1rem;
+}
+
+.avatar-preview--empty {
+    background: #FFFFFF;
+}
+/* === Адаптив (только main/section) === */
+@media (max-width: 600px) {
+    main {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+    main > section {
+        padding: 1.25rem;
+    }
+}

@@ -1,0 +1,192 @@
+/* === Main — flex, центрирует .form-card === */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: none;
+    padding: 3rem 2rem;
+}
+
+/* === Внешняя карточка .form-card === */
+.form-card {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* === Внутренняя рамка — форма === */
+.form-card form {
+    background: #FAFAFA;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* === Заголовок формы === */
+form h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* === Поля (каждое в <p>) === */
+form p {
+    margin-bottom: 1rem;
+}
+
+/* Последний <p> — ссылка + кнопка в ряд */
+form p:last-child {
+    margin-bottom: 0;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* === Лейблы === */
+form label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.375rem;
+}
+
+/* === Инпуты === */
+form input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-family: inherit;
+    background: #FFFFFF;
+    color: #111827;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+form input:focus {
+    border-color: #6366F1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    outline: none;
+}
+
+/* === Сообщения об ошибках === */
+form small {
+    display: block;
+    color: #DC2626;
+    font-size: 0.75rem;
+    margin-top: 0.375rem;
+}
+
+/* === Ссылки внутри формы === */
+form a {
+    color: #6B7280;
+    text-decoration: underline;
+    font-size: 0.875rem;
+}
+
+form a:hover {
+    color: #111827;
+}
+
+/* === Кнопка отправки === */
+form button {
+    padding: 0.5rem 1.25rem;
+    background: #111827;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+
+form button:hover {
+    background: #1F2937;
+}
+
+/* === Intro-текст — описание под заголовком === */
+form .intro-text {
+    background: #F3F4F6;
+    border-radius: 6px;
+    padding: 0.875rem 1rem;
+    font-size: 0.875rem;
+    color: #4B5563;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+/* === Чекбокс «Запомнить меня» (только для login) === */
+form .checkbox-row {
+    display: flex;
+    align-items: center;
+}
+
+form .checkbox-row label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+form .checkbox-row input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    accent-color: #6366F1;
+    cursor: pointer;
+}
+
+form .checkbox-row span {
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+/* === Статус-сообщение (после определенных действий) === */
+form .status-message {
+    background: #DBEAFE;
+    color: #1E40AF;
+    border: 1px solid #93C5FD;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+/* === Адаптив === */
+@media (max-width: 600px) {
+    header {
+        padding: 0.75rem 1rem;
+    }
+    .header-title {
+        font-size: 1rem;
+    }
+    main {
+        padding: 1.5rem 1rem;
+    }
+    .form-card {
+        padding: 1rem;
+    }
+    .form-card form {
+        padding: 1.5rem;
+    }
+}
