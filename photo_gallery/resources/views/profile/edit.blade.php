@@ -7,12 +7,14 @@
         <title>{{ config('app.name', 'Фотогалерея') }} — Профиль</title>
 
         @vite(['resources/css/basic.css'])
-        @vite(['resources/css/headerPhotoGalleryProfile.css'])
+        @vite(['resources/css/header.css'])
         @vite(['resources/css/mainProfile.css'])
     </head>
     <body>
         <header>
+
             <h1>Фотогалерея</h1>
+
             <nav>
                 @auth
                     <div class="user-avatar-block">

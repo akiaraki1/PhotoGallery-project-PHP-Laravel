@@ -9,62 +9,63 @@ header {
     top: 0;
     z-index: 10;
     position: relative; 
-
 }
 
 header h1 {
     font-size: 1.25rem;
     font-weight: 600;
     color: #111827;
-    letter-spacing: -0.01em;
 }
+
+
+header p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.875rem;
+    color: #6B7280;
+    white-space: nowrap;
+}
+
+
+/* === Блок nav в header === */
 
 nav {
     display: flex;
     align-items: center;
+    flex-shrink: 0; 
     gap: 1rem;
 }
 
-nav a {
+nav a, nav form button {
     padding: 0.5rem 1rem;
     border: 1px solid #E5E7EB;
     border-radius: 6px;
-    text-decoration: none;
+    background: #FFFFFF;
     color: #374151;
     font-size: 0.875rem;
-    background: #FFFFFF;
     transition: background 0.15s, border-color 0.15s;
+    cursor: pointer;
 }
 
-nav a:hover {
-    background: #F9FAFB;
-    border-color: #D1D5DB;
-}
-
-nav form {
-    display: inline;
-    margin: 0;
+nav a {
+    text-decoration: none;
 }
 
 nav form button {
-    padding: 0.5rem 1rem;
-    border: 1px solid #E5E7EB;
-    border-radius: 6px;
-    background: #FFFFFF;
-    color: #374151;
-    font-size: 0.875rem;
-    cursor: pointer;
     font-family: inherit;
-    transition: background 0.15s, border-color 0.15s;
 }
 
-nav form button:hover {
+nav a:hover, form button:hover {
     background: #F9FAFB;
     border-color: #D1D5DB;
 }
 
-/* === Блок аватара в шапке === */
+
+/* === Блок аватара в nav === */
 .user-avatar-block {
+    width: 130px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,11 +83,13 @@ nav form button:hover {
 .user-avatar-block img {
     width: 40px;
     height: 40px;
-    object-fit: cover;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .user-avatar-block span {
+    width: 100%;
     font-size: 0.75rem;
+    text-align: center;
     color: #6B7280;
 }

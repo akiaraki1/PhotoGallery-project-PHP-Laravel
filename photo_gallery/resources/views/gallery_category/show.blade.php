@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'Фотогалерея') }} — Просмотр поста</title>
     @vite(['resources/css/basic.css'])
-    @vite(['resources/css/headerPhotoGalleryProfile.css'])
+    @vite(['resources/css/header.css'])
     @vite(['resources/css/mainShow.css'])
 </head>
     <body>

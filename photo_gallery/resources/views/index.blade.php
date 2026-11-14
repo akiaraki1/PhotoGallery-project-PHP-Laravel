@@ -7,41 +7,42 @@
         <title>{{ config('app.name', 'Фотогалерея') }}</title>
 
         @vite(['resources/css/basic.css'])
-        @vite(['resources/css/headerIndexRegisterLogin.css'])
+        @vite(['resources/css/header.css'])
         @vite(['resources/css/mainIndexPhotoGallery.css'])
     </head>
     <body>
         <header>
-            <div class="header-title">Фотогалерея</div>
-                <nav>
-                    @auth
-                        @if (Route::has('photo_gallery'))
-                            <a
-                                href="{{ route('photo_gallery') }}"
-                            >
-                                {{ __('Log in') }}
-                            </a>
-                        @endif
-                    @endauth
+            <h1>Фотогалерея</h1>
 
-                    @guest
-                        @if (Route::has('login'))
-                            <a
-                                href="{{ route('login') }}"
-                            >
-                                {{ __('Log in') }}
-                            </a>
-                        @endif
+            <nav>
+                @auth
+                    @if (Route::has('photo_gallery'))
+                        <a
+                            href="{{ route('photo_gallery') }}"
+                        >
+                            {{ __('Log in') }}
+                        </a>
+                    @endif
+                @endauth
 
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                            >
-                                    {{ __('Register') }}
-                            </a>
-                        @endif
-                    @endguest
-                </nav>
+                @guest
+                    @if (Route::has('login'))
+                        <a
+                            href="{{ route('login') }}"
+                        >
+                            {{ __('Log in') }}
+                        </a>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <a
+                            href="{{ route('register') }}"
+                        >
+                                {{ __('Register') }}
+                        </a>
+                    @endif
+                @endguest
+            </nav>
         </header>
 
         <main>

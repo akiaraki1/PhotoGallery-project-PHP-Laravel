@@ -7,7 +7,7 @@
         <title>{{ config('app.name', 'Фотогалерея') }} — {{ __('categories.' . $category) }}</title>
 
         @vite(['resources/css/basic.css'])
-        @vite(['resources/css/headerPhotoGalleryProfile.css'])
+        @vite(['resources/css/header.css'])
         @vite(['resources/css/mainCategory.css'])
     </head>
     <body>

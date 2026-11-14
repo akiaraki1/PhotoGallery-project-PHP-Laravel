@@ -84,13 +84,3 @@ main {
         margin: 1rem auto;
     }
 }
-
-.header-subtitle {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.875rem;
-    color: #6B7280;
-    white-space: nowrap;
-}

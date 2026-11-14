@@ -6,7 +6,7 @@
 
         <title>{{ config('app.name', 'Фотогалерея') }} — Добавление поста</title>
         @vite(['resources/css/basic.css'])
-        @vite(['resources/css/headerPhotoGalleryProfile.css'])
+        @vite(['resources/css/header.css'])
         @vite(['resources/css/mainCategoryFormEdit.css'])
      
     </head>

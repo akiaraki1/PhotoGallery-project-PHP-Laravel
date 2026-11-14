@@ -7,13 +7,15 @@
         <title>{{ config('app.name', 'Фотогалерея') }} — Регистрация</title>
 
         @vite(['resources/css/basic.css'])
-        @vite(['resources/css/headerIndexRegisterLogin.css'])
+        @vite(['resources/css/header.css'])
         @vite(['resources/css/mainLoginRegister.css'])
         
     </head>
     <body>
         <header>
-            <div class="header-title">Фотогалерея</div>
+
+            <h1>Фотогалерея</h1>
+
             <nav>
                 @if (Route::has('index'))
                     <a 
@@ -41,7 +43,7 @@
 
                     <p>
                         <label for="name">Имя</label> 
-                        <input type="text" id="name" name="name" placeholder="Максимальное количество символов 255." value="{{ old('name') }}" required autofocus autocomplete="name">
+                        <input type="text" id="name" name="name" placeholder="Максимальное количество символов 15." value="{{ old('name') }}" required autofocus autocomplete="name">
                         @error('name')
                             <small>{{ $message }}</small>
                         @enderror

@@ -7,12 +7,12 @@
         <title>{{ config('app.name', 'Фотогалерея') }} — Сброс пароля</title>
 
         @vite(['resources/css/basic.css'])
-        @vite(['resources/css/headerIndexRegisterLogin.css'])
+        @vite(['resources/css/header.css'])
         @vite(['resources/css/mainLoginRegister.css'])
     </head>
     <body>
         <header>
-            <div class="header-title">Фотогалерея</div>
+            <h1>Фотогалерея</h1>
             <nav>
                 @if (Route::has('index'))
                     <a 

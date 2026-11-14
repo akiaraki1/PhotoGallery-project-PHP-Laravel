@@ -7,14 +7,14 @@
         <title>{{ config('app.name', 'Фотогалерея') }} — гелереи</title>
 
         @vite(['resources/css/basic.css'])
-        @vite(['resources/css/headerPhotoGalleryProfile.css'])
+        @vite(['resources/css/header.css'])
         @vite(['resources/css/mainIndexPhotoGallery.css'])
     </head>
     <body>
         <header>
             <h1>Фотогалерея</h1>
 
-            <p class="header-subtitle">Добавляйте свои фотографии в указанные ниже категории галерей.</p>
+            <p>Добавляйте свои фотографии в указанные ниже категории галерей.</p>
 
             <nav>
                 @auth
