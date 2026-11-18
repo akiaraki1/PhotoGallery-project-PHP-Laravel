@@ -8,7 +8,7 @@
         
         @vite(['resources/css/basic.css'])
         @vite(['resources/css/header.css'])
-        @vite(['resources/css/mainLoginRegister.css']) 
+        @vite(['resources/css/mainForm.css'])
         
     </head>
     <body>
@@ -48,35 +48,33 @@
                         </div>
                     @endif
 
-                    <p>
+                    <div>
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
+                        <input type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
                         @error('email')
                             <small>{{ $message }}</small>
                         @enderror
-                    </p>
+                    </div>
 
-                    <p>
+                    <div>
                         <label for="password">Пароль</label>
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                        <input type="password" name="password" required autocomplete="current-password">
                         @error('password')
                             <small>{{ $message }}</small>
                         @enderror
-                    </p>
+                    </div>
 
-                    <p class="checkbox-row">
-                        <label>
-                            <input type="checkbox" id="remember_me" name="remember">
+                    <div class="checkbox-row">
+                            <input type="checkbox" name="remember">
                             <span>Запомнить меня</span>
-                        </label>
-                    </p>
+                    </div>
 
-                    <p>
+                    <div class="last">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}">Забыли пароль?</a>
                         @endif
                         <button type="submit">Войти</button>
-                    </p>
+                    </div>
                 </form>
             </div>
         </main>

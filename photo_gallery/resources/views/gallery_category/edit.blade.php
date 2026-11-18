@@ -7,7 +7,7 @@
         <title>{{ config('app.name', 'Фотогалерея') }} — Редактирование поста</title>
         @vite(['resources/css/basic.css'])
         @vite(['resources/css/header.css'])
-        @vite(['resources/css/mainCategoryFormEdit.css'])
+        @vite(['resources/css/mainForm.css'])
      
     </head>
     <body>
@@ -44,41 +44,50 @@
         </header>
 
         <main>
+            <div class="form-card">
+                <form action="{{ route('gallery.update', ['category' => $category, 'photoGallery' => $photoGallery]) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    
+                    <h1>Редактировать запись</h1>
 
-            <h1>Редактировать запись</h1>
+                    @if (session('status'))
+                        <div class="status-message">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                
+                    <div>
+                        <label for="image">Изображение</label>
+                        <img src="{{ asset('storage/' . $photoGallery->image) }}" alt="{{ $photoGallery->title }}">
+                        <input type="file" name="image" id="image">
+                        <p>Размер файла — до 5 МБ. Габариты изображения — от 300×300 до 500×500 px. Рекомендуемый размер изображения 400x400 px. Форматы: jpeg, jpg, png, webp. </p>
+                        @error('image')
+                            <small class="error">{{ $message }}</small>
+                        @enderror
+                    </div>
 
-            
-            <form action="{{ route('gallery.update', ['category' => $category, 'photoGallery' => $photoGallery]) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <div class="field">
-                    <label for="image">Изображение</label>
-                    <img src="{{ asset('storage/' . $photoGallery->image) }}" alt="{{ $photoGallery->title }}">
-                    <input type="file" name="image" id="image">
-                    <p>Размер файла — до 5 МБ. Габариты изображения — от 300×300 до 500×500 px. Рекомендуемый размер изображения 400x400 px. Форматы: jpeg, jpg, png, webp. </p>
-                    @error('image')
-                        <small class="error">{{ $message }}</small>
-                    @enderror
-                </div>
+                    <div>
+                        <label for="title">Заголовок</label>
+                        <input type="text" name="title" placeholder="Не более 50 символов."value="{{ old('title', $photoGallery->title) }}">
+                        @error('title')
+                            <small class="error">{{ $message }}</small>
+                        @enderror
+                    </div>
 
-                <div class="field">
-                    <label for="title">Заголовок</label>
-                    <input type="text" name="title" placeholder="Не более 50 символов."value="{{ old('title', $photoGallery->title) }}">
-                    @error('title')
-                        <small class="error">{{ $message }}</small>
-                    @enderror
-                </div>
+                    <div>
+                        <label for="description">Описание</label>
+                        <textarea name="description" placeholder="Не более 150 символов.">{{ old('description', $photoGallery->description)}}</textarea>
+                        @error('description')
+                            <small class="error">{{ $message }}</small>
+                        @enderror
+                    </div>
 
-                <div class="field">
-                    <label for="description">Описание</label>
-                    <textarea name="description" rows="4" placeholder="Не более 150 символов.">{{ old('description', $photoGallery->description)}}</textarea>
-                    @error('description')
-                        <small class="error">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <button type="submit" class="btn-save">Сохранить изменения</button>
-            </form>
+                    <div class="last">
+                    <button type="submit" >Сохранить изменения</button>
+                    </div>
+                </form>
+            </div>
         </main>
     </body>
 </html>

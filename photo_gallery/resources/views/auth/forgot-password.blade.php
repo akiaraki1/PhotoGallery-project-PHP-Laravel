@@ -8,7 +8,7 @@
 
         @vite(['resources/css/basic.css'])
         @vite(['resources/css/header.css'])
-        @vite(['resources/css/mainLoginRegister.css'])
+        @vite(['resources/css/mainForm.css'])
     </head>
     <body>
         <header>
@@ -38,10 +38,6 @@
 
                     <h2>Забыли пароль?</h2>
 
-                    <p class="intro-text">
-                        Нет проблем. Укажите свой email — мы отправим ссылку для сброса пароля, по которой вы сможете выбрать новый.
-                    </p>
-
                     @if (session('status'))
                         <div class="status-message">
                             {{ session('status') }}
@@ -49,16 +45,22 @@
                     @endif
 
                     <p>
+                        Нет проблем. Укажите свой email — мы отправим ссылку для сброса пароля, по которой вы сможете выбрать новый.
+                    </p>
+
+                    
+
+                    <div>
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus>
+                        <input type="email" name="email" value="{{ old('email') }}" required autofocus>
                         @error('email')
                             <small>{{ $message }}</small>
                         @enderror
-                    </p>
+                    </div>
 
-                    <p>
+                    <div class="last">
                         <button type="submit">Отправить ссылку</button>
-                    </p>
+                    </div>
                 </form>
             </div>
         </main>

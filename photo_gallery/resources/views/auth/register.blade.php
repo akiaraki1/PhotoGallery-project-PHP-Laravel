@@ -8,7 +8,7 @@
 
         @vite(['resources/css/basic.css'])
         @vite(['resources/css/header.css'])
-        @vite(['resources/css/mainLoginRegister.css'])
+        @vite(['resources/css/mainForm.css'])
         
     </head>
     <body>
@@ -41,42 +41,48 @@
 
                     <h2>Регистрация</h2>
 
-                    <p>
+                    @if (session('status'))
+                        <div class="status-message">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <div>
                         <label for="name">Имя</label> 
-                        <input type="text" id="name" name="name" placeholder="Максимальное количество символов 15." value="{{ old('name') }}" required autofocus autocomplete="name">
+                        <input type="text" name="name" placeholder="Максимальное количество символов 15." value="{{ old('name') }}" required autofocus autocomplete="name">
                         @error('name')
                             <small>{{ $message }}</small>
                         @enderror
-                    </p>
+                    </div>
 
-                    <p>
+                    <div>
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Максимальное количество символов 255." value="{{ old('email') }}" required autocomplete="username">
+                        <input type="email" name="email" placeholder="Максимальное количество символов 255." value="{{ old('email') }}" required autocomplete="username">
                         @error('email')
                             <small>{{ $message }}</small>
                         @enderror
-                    </p>
+                    </div>
 
-                    <p>
+                    <div>
                         <label for="password">Пароль</label>
-                        <input type="password" id="password" name="password" required autocomplete="new-password">
+                        <input type="password" name="password" required autocomplete="new-password">
                         @error('password')
                             <small>{{ $message }}</small>
                         @enderror
-                    </p>
+                    </div>
 
-                    <p>
+                    <div>
                         <label for="password_confirmation">Подтвердите пароль</label>
-                        <input type="password" id="password_confirmation" placeholder="Введите повторно пароль." name="password_confirmation" required autocomplete="new-password">
+                        <input type="password" name="password_confirmation" placeholder="Введите повторно пароль." required autocomplete="new-password">
                         @error('password_confirmation')
                             <small>{{ $message }}</small>
                         @enderror
-                    </p>
+                    </div>
 
-                    <p>
+                    <div class="last">
                         <a href="{{ route('login') }}">Уже зарегистрированы?</a>
                         <button type="submit">Зарегистрироваться</button>
-                    </p>
+                    </div>
                 </form>
             </div>
         </main>

@@ -44,7 +44,6 @@
                 @endguest
             </nav>
         </header>
-
         <main>
             <div class="card">
                 <img src="{{ asset('images/categories/nature.jpg') }}" alt="Природа">
