@@ -1,122 +1,94 @@
-/* === Main: сетка карточек === */
 main {
-    max-width: 1320px;                 /* 3 × 400 + отступы */
-    margin: 2rem auto;
-    padding: 2rem;                     /* видимый паддинг */
+    width: 100%;
+    max-width: 1250px;                 
+    margin: 2rem auto;                 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);   /* ровно 3 блока в ряд */
+    grid-template-columns: repeat(3, 1fr);   
     gap: 1.5rem;
-    background: #F9FAFB;               /* фон, чтобы паддинг был виден */
+    background: none;                
     border-radius: 8px;
 }
 
-/* === Карточки === */
 .card {
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
     border-radius: 8px;
     overflow: hidden;
-    transition: box-shadow 0.2s, transform 0.2s;
+    transition: transform 0.2s;
 }
 
 .card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transform: translateY(-2px);
 }
 
-/* Изображение 400×400 */
-.card img,
-.card .category {
-    width: 400px;
+.card img {
+    width: 100%;
     height: 400px;
     object-fit: cover;
     display: block;
-    margin: 0 auto;                    /* центрируем внутри карточки */
-    background: #F3F4F6;
-    border-radius: 0;
 }
 
-/* === Заголовок карточки === */
-.card h3 {
+.card .card-text-button {
+    background: #FFFFFF;
+    height: calc(100% - 400px);
+}
+
+.card-text-button h2 {
+    padding: 8px;
+    text-align: justify;
     font-size: 1.125rem;
     font-weight: 600;
     color: #111827;
     line-height: 1.3;
-    padding: 1.25rem 1.25rem 0.5rem;   /* верх + боковые, низ маленький */
-    margin: 0;
-
-    /* фиксированная высота для ~50 символов (2 строки) */
-    height: 3.2rem;                     /* 2 × 1.125rem × 1.3 ≈ 2.92rem + запас */
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;              /* максимум 2 строки */
-    -webkit-box-orient: vertical;
+    height: 3.2rem;                     
+    margin-bottom: 8px;
 }
 
-/* === Описание карточки === */
-.card p {
+.card-text-button p {
+    padding: 8px;
+    text-align: justify;
     font-size: 0.875rem;
     color: #6B7280;
-    line-height: 1.5;
-    padding: 0 1.25rem 1.25rem;        /* боковые + низ */
-    margin: 0;
-
-    /* фиксированная высота для ~150 символов (4 строки) */
-    height: 5.25rem;                    /* 4 × 0.875rem × 1.5 ≈ 5.25rem */
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;              /* максимум 4 строки */
-    -webkit-box-orient: vertical;
+    line-height: 1.5;                      
+    height: 5.25rem;                   
 }
 
-/* === Адаптив === */
-@media (max-width: 1200px) {
-    main {
-        grid-template-columns: repeat(2, 1fr);   /* 2 в ряд на средних */
-    }
-}
-
-@media (max-width: 768px) {
-    main {
-        grid-template-columns: 1fr;              /* 1 в ряд на мобилках */
-        padding: 1rem;
-    }
-
-    .card img,
-    .card .category {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
-    }
-}
-
-/* === Подзаголовок шапки === */
-.header-subtitle {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.875rem;
-    color: #6B7280;
-    white-space: nowrap;
-}
-
-/* === Кнопки === */
-.card-actions {
+.card-button {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    padding: 1rem 1.25rem 1.25rem;
     border-top: 1px solid #F3F4F6;
+    padding: 8px;
 }
 
-.card-actions form {
+.card-button .blue {
+    background: #3B82F6;
+    color: #fff;
+}
+.card-button .blue:hover {
+    background: #2563EB;
+}
+
+.card-button form {
     display: inline;
-    margin: 0;
 }
 
-.card-actions > a,
-.card-actions form button {
+.card-button .orange {
+    background: #F59E0B;
+    color: #fff;
+}
+.card-button .orange:hover {
+    background: #D97706;
+}
+
+.card-button .red {
+    background: #DC2626;
+    color: #fff;
+}
+.card-button .red:hover {
+    background: #B91C1C;
+}
+
+.card-button a,
+.card-button form button {
     display: inline-flex;
     align-items: center;
     padding: 0.4rem 0.875rem;
@@ -132,28 +104,14 @@ main {
     white-space: nowrap;
 }
 
-.card-actions > a:first-child {
-    background: #3B82F6;
-    color: #fff;
-}
-.card-actions > a:first-child:hover {
-    background: #2563EB;
-}
-
-.card-actions > a:nth-child(2) {
-    background: #F59E0B;
-    color: #fff;
-}
-.card-actions > a:nth-child(2):hover {
-    background: #D97706;
-}
-
-.card-actions form button {
-    background: #DC2626;
-    color: #fff;
-}
-.card-actions form button:hover {
-    background: #B91C1C;
+.empty {
+    color: #111827;
+    border-radius: 8px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFFFFF;
 }
 
 /* === Пагинация === */

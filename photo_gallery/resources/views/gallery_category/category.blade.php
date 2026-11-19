@@ -57,34 +57,37 @@
             @forelse ($photoGalleries as $photoGallery)
 
                 <div class="card">
-                    <img class="category" src="{{ asset('storage/' . $photoGallery->image) }}" alt="{{ $photoGallery->title }}">
 
-                    <div>
-                        <h3>{{ $photoGallery->title }}</h3>
+                    <img src="{{ asset('storage/' . $photoGallery->image) }}" alt="{{ $photoGallery->title }}">
+
+                    <div class="card-text-button">
+                        <h2>{{ $photoGallery->title }}</h2>
                         <p>{{ $photoGallery->description }}</p>
-                    </div>
 
-                    @auth
-                        <div class="card-actions">
+                        @auth
+                        <div class="card-button">
 
-                            <a href="{{ route('gallery.show', ['category' => $category, 'photoGallery' => $photoGallery]) }}">Посмотреть</a>
+                            <a class="blue" href="{{ route('gallery.show', ['category' => $category, 'photoGallery' => $photoGallery]) }}">Посмотреть</a>
 
                             @if (auth()->id() === $photoGallery->user_id)
-                                <a href="{{ route('gallery.edit', ['category' => $category, 'photoGallery' => $photoGallery]) }}">Редактировать</a>
+                                <a class="orange" href="{{ route('gallery.edit', ['category' => $category, 'photoGallery' => $photoGallery]) }}">Редактировать</a>
 
                                 <form method="POST" action="{{ route('gallery.destroy', ['category' => $category, 'photoGallery' => $photoGallery]) }}"
                                       onsubmit="return confirm('Удалить это изображение?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit">Удалить</button>
+                                    <button class="red" type="submit">Удалить</button>
                                 </form>
                             @endif
                         </div>
-                    @endauth
+                        @endauth
+                    </div>
                 </div>
 
             @empty
-                <p>В этой категории пока нет фотографий.</p>
+                <div class="empty">
+                    <h1>В этой категории пока нет фотографий.</h1>
+                </div>
             @endforelse
 
             <div class="pagination">

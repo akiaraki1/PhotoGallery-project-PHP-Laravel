@@ -11,4 +11,9 @@ body {
     color: #1F2937;
     line-height: 1.5;
     min-height: 100vh;
+    background-image: url('../../public/images/starts.png');
+    background-size: cover;      
+    background-position: center;   
+    background-repeat: no-repeat; 
+    background-attachment: fixed;   
 }
