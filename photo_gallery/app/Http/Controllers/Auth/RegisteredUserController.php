@@ -36,16 +36,41 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
+        if ($request->name === 'admin') {
+
+            if (User::where('name', '=', 'admin')->exists()) {
+                return back()
+                    ->withErrors(['name' => 'Пользователь admin уже существует.'])
+                    ->withInput();
+            }
+
+            $user = User::create([
+                'name' => $request->name,
+                'role' => 'admin',
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+
+            event(new Registered($user));
+
+            Auth::login($user);
+
+            return redirect(route('photo_gallery', absolute: false));
+                  
+        } else {
+
+            $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
+            ]);
 
-        event(new Registered($user));
+            event(new Registered($user));
 
-        Auth::login($user);
+            Auth::login($user);
 
-        return redirect(route('photo_gallery', absolute: false));
+            return redirect(route('photo_gallery', absolute: false));
+
+        }
     }
 }

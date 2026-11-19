@@ -146,7 +146,7 @@
                         @enderror
                     </div>
 
-                    <div class="last">
+                    <div class="red">
                         <button type="submit">Удалить аккаунт</button>
                     </div>
             

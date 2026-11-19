@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/{category}/edit/{photoGallery}', [PhotoGalleryController::class, 'edit'])->name('gallery.edit');
             Route::put('/{category}/update/{photoGallery}', [PhotoGalleryController::class, 'update'])->name('gallery.update');
             Route::delete('/{category}/destroy/{photoGallery}', [PhotoGalleryController::class, 'destroy'])->name('gallery.destroy');
+            Route::post('/{category}/ban/{photoGallery}', [PhotoGalleryController::class, 'ban'])->name('gallery.ban');
         });
 
     });

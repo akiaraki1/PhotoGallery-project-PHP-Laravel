@@ -154,9 +154,26 @@ form a:hover {
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid #E5E7EB;
-    margin-bottom: 1rem;
+    margin: 8px auto;
 }
 
 .avatar-preview--empty {
     background: #FFFFFF;
+}
+
+.red button{
+    padding: 0.5rem 1.25rem;
+    background: #DC2626;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+}
+
+.red button:hover {
+    background: #C81E1E;
 }

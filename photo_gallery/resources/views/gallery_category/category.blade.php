@@ -69,7 +69,7 @@
 
                             <a class="blue" href="{{ route('gallery.show', ['category' => $category, 'photoGallery' => $photoGallery]) }}">Посмотреть</a>
 
-                            @if (auth()->id() === $photoGallery->user_id)
+                            @if (auth()->id() === $photoGallery->user_id || auth()->user()->name === 'admin')
                                 <a class="orange" href="{{ route('gallery.edit', ['category' => $category, 'photoGallery' => $photoGallery]) }}">Редактировать</a>
 
                                 <form method="POST" action="{{ route('gallery.destroy', ['category' => $category, 'photoGallery' => $photoGallery]) }}"
@@ -77,6 +77,14 @@
                                     @csrf
                                     @method('DELETE')
                                     <button class="red" type="submit">Удалить</button>
+                                </form>
+                            @endif
+
+                            @if(auth()->user()->name === 'admin' && auth()->id() !== $photoGallery->user_id)
+                                <form method="POST" action="{{ route('gallery.ban', ['category' => $category, 'photoGallery' => $photoGallery]) }}"
+                                      onsubmit="return confirm('Забанить пользователя данного поста?');">
+                                    @csrf
+                                    <button class="red" type="submit">Забанить</button>
                                 </form>
                             @endif
                         </div>

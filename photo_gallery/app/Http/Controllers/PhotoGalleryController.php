@@ -8,6 +8,8 @@ use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 use App\Services\ImageManager;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\DB;
 
 class PhotoGalleryController extends Controller
 {
@@ -156,5 +158,28 @@ class PhotoGalleryController extends Controller
 
         return redirect()->route('gallery.category', ['category' => $category])
         ->with('status', 'Пост удален.');
+    }
+    public function ban(Request $request, ImageManager $imageManager, string $category, PhotoGallery $photoGallery)
+    { 
+        // изменяем роль пользователю
+        User::where('id', '=', $photoGallery->user_id)->update(['role' => 'ban']);
+
+        //  Удаляем сессии пользователя (разлогиниваем его на всех устройствах)
+        DB::table('sessions')->where('user_id', '=', $photoGallery->user_id)->delete();
+
+        // берем все пути к изображениям в виде массива
+        $images = PhotoGallery::where('user_id', '=', $photoGallery->user_id)
+        ->pluck('image')
+        ->toArray();
+
+        // удаляем все изображения из папки
+        $imageManager->deleteall($images);
+
+        // удаляем все посты из бд Фотогалереи данного пользователя
+        PhotoGallery::where('user_id', '=', $photoGallery->user_id)->delete();
+
+
+        return redirect()->route('gallery.category', ['category' => $category])
+        ->with('status', 'Пользователь забанен и все его посты удалены.');
     }
 }

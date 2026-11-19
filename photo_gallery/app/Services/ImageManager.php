@@ -65,4 +65,10 @@ class ImageManager
     {
             Storage::disk('public')->delete($oldImage);
     }
+    public function deleteall($arrImage)
+    {   
+        foreach ($arrImage as $image) {
+            Storage::disk('public')->delete($image);
+        }   
+    }
 }
